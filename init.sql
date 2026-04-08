@@ -15,3 +15,4 @@ INSERT INTO tasks VALUES
   (5, 'Call mom', 'pending'),
   (6, 'Fix bug', 'done'),
   (7, 'Tea', 'pending');
+INSERT INTO tasks VALUES (8, 'Coffee', 'pending');
