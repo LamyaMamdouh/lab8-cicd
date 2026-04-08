@@ -22,11 +22,7 @@ app.get('/', (req, res) => {
 app.get('/tasks', async (req, res) => {
   try {
     const [rows] = await pool.query('SELECT * FROM tasks');
-    const grouped = rows.reduce((acc, task) => {
-      acc[task.status] = acc[task.status] || [];
-      acc[task.status].push(task);
-      return acc;
-    }, {});
+    const grouped = Object.groupBy(rows, task => task.status);
     res.json(grouped);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -37,6 +33,7 @@ app.listen(PORT, () => {
   console.log('--------------------------------------------------');
   console.log(`  CISC 886 Lab 8 — App started`);
   console.log(`  Port:  ${PORT}`);
+  console.log(`  Mode:  ${process.env.MODE || 'local'}`);
   console.log(`  Node:  ${process.version}`);
   console.log(`  Host:  ${os.hostname()}`);
   console.log('--------------------------------------------------');
