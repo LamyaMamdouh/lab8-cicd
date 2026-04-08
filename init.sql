@@ -13,4 +13,5 @@ INSERT INTO tasks VALUES
   (3, 'Read a book', 'pending'),
   (4, 'Write report', 'done'),
   (5, 'Call mom', 'pending'),
-  (6, 'Fix bug', 'done');
+  (6, 'Fix bug', 'done'),
+  (7, 'Tea', 'pending');
